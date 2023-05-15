@@ -36,23 +36,30 @@
         </table>
     </div>
     <div>
-        <!-- Modal -->
-        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de Edición</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Acutualizar</button>
-                    </div>
-                </div>
+      <!-- Modal -->
+      <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="updateModalLabel">Editar Rol</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body">
+              <form action="">
+              <label for="" class="">Edición Rol:</label><br>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="txtRolEditar" placeholder="Digite el rol">
+                  <label for="txtRolEditar">Nombre Rol</label>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary">Editar</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 </form>
 <?php include_once "footer.php"; ?>

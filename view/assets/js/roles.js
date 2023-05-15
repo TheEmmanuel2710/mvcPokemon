@@ -49,6 +49,27 @@ function Delete() {
 }
 function readId(id) {
     console.log(id);
+
+    var data = `id=${id}`;
+
+    //Configuracion de la peticion
+    var options = {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
+    };
+
+    fetch('http://localhost/mvcPokemon/controller/roles.readOne.php', options)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            document.getElementById("txtRolEditar").value = data[0].nombreRol;
+        })
+        .catch((error) => {
+            console.log("Error al obtener los roles!!" + error)
+        })
 }
 
 window.onload = (event) => {

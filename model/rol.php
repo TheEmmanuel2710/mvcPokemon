@@ -42,6 +42,18 @@ class Rol
             return "Error: al consultar roles" . $e->getMessage();
         }
     }
+    public function readOne($id)
+    {
+        try {
+            $request = $this->con->getCon()->prepare("SELECT * FROM roles WHERE estado = 'A' AND id = :id");
+            $request->bindParam(":id", $id);
+            $request->execute();
+            $result = $request->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            return "Error al consultar los roles " . $e->getMessage();
+        } 
+    }   
     /**
      * Get the value of id
      */
@@ -97,4 +109,3 @@ class Rol
         return $this;
     }
 }
-?>
