@@ -34,7 +34,7 @@ class Rol
     public function read()
     {
         try {
-            $request = $this->con->getCon()->prepare("SELECT * FROM  roles WHERE estado='A'");
+            $request = $this->con->getCon()->prepare("SELECT * FROM  roles");
             $request->execute();
             $result=$request->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
@@ -45,15 +45,39 @@ class Rol
     public function readOne($id)
     {
         try {
-            $request = $this->con->getCon()->prepare("SELECT * FROM roles WHERE estado = 'A' AND id = :id");
+            $request = $this->con->getCon()->prepare("SELECT * FROM roles WHERE id = :id");
             $request->bindParam(":id", $id);
             $request->execute();
             $result = $request->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            return "Error al consultar los roles " . $e->getMessage();
+            return "Error al consultar rol " . $e->getMessage();
         } 
-    }   
+    }
+    public function estado()
+    {
+        try {
+            $request = $this->con->getCon()->prepare("UPDATE roles SET estado = ? WHERE id = ?");
+            $request->bindParam(1,$this->estado);
+            $request->bindParam(2,$this->id);
+            $request->execute();
+            return "Estado modificado";
+        } catch (PDOException $e) {
+            return "Error al actualizar estado " . $e->getMessage();
+        }
+    }  
+    public function update()
+    {
+        try {
+            $request = $this->con->getCon()->prepare("UPDATE roles SET nombreRol = ? WHERE id = ?");
+            $request->bindParam(1,$this->nombre);
+            $request->bindParam(2,$this->id);
+            $request->execute();
+            return "Nombre rol modificado";
+        } catch (PDOException $e) {
+            return "Error al actualizar el nombre del rol" . $e->getMessage();
+        }
+    } 
     /**
      * Get the value of id
      */
