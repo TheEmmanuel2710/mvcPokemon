@@ -1,5 +1,7 @@
 <?php
+
 include_once "../model/rol.php";
+
 $rolM = new Modelo\Rol();
 $result = $rolM->read();
 

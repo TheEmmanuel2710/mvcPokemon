@@ -78,6 +78,17 @@ class Rol
             return "Error al actualizar el nombre del rol" . $e->getMessage();
         }
     } 
+    public function delete()
+    {
+        try {
+            $request = $this->con->getCon()->prepare("DELETE FROM roles  WHERE id = ?");
+            $request->bindParam(1,$this->id);
+            $request->execute();
+            return "Rol eliminado de manera exitosa";
+        } catch (PDOException $e) {
+            return "Error al eliminar el rol" . $e->getMessage();
+        }
+    } 
     /**
      * Get the value of id
      */
